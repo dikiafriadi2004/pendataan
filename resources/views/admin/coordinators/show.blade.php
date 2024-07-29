@@ -37,7 +37,7 @@
                         <div class="user-detail mb-4">
                             <h5 class="text-primary mb-2"> <i class="fa fa-info-circle me-2"></i>Informasi</h5>
                             <ul class="info-list">
-                              <li><span>Name : </span>{{ $coordinator->id }} {{ $coordinator->name }}
+                              <li><span>Name : </span>#K{{ $coordinator->id }} {{ $coordinator->name }}
                               </li>
                               <li><span>NIK : </span>{{ $coordinator->nik }}
                               </li>

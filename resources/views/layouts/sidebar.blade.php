@@ -1,7 +1,10 @@
 <aside class="codex-sidebar">
-    <div class="logo-gridwrap codex-brand"><a class="codexbrand-logo d-flex" href="index.html"><img
-                class="img-fluid" src="assets/images/logo/logo.png" alt="theeme-logo"><span
-                class="text-white fs-3 align-middle ms-2 fw-semibold">Rohi</span></a>
+    <div class="logo-gridwrap codex-brand">
+        <a class="codexbrand-logo d-flex" href="index.html">
+            {{-- <img
+                class="img-fluid" src="assets/images/logo/logo.png" alt="theeme-logo"> --}}
+                <span
+                class="text-white fs-3 align-middle ms-2 fw-semibold">Pendataan</span></a>
         <div class="sidebar-action"><i data-feather="grid"> </i></div>
     </div>
     <div class="codex-menuwrapper">

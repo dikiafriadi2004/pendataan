@@ -75,6 +75,6 @@ class VillageController extends Controller
             $village->delete();
         });
 
-        return redirect()->route('admin.categories.index');
+        return redirect()->route('admin.villages.index');
     }
 }
