@@ -8,12 +8,11 @@
 <div class="codex-breadcrumb">
     <div class="row">
         <div class="col-4">
-            <h1 class="fs-5">Default</h1>
+            <h1 class="fs-5">Dashboard</h1>
         </div>
         <div class="col-8">
             <ul class="breadcrumb justify-content-end mb-0">
                 <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
-                <li class="breadcrumb-item"><a class="text-light" href="#!">Default</a></li>
             </ul>
         </div>
     </div>
@@ -21,7 +20,7 @@
 @endsection
 
 @section('content')
-<div class="theme-body common-dash" data-simplebar>
+{{-- <div class="theme-body common-dash" data-simplebar>
     <div class="custom-container">
         <div class="row">
             <div class="col-xxl-6">
@@ -754,5 +753,5 @@
             </div>
         </div>
     </div>
-</div>
+</div> --}}
 @endsection

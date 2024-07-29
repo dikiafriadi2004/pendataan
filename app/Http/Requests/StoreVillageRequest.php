@@ -23,7 +23,7 @@ class StoreVillageRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => ['required', 'string', 'max:255', 'unique:'.Village::class]
+            'name' => ['required', 'string', 'max:255', 'unique:'.Village::class],
         ];
     }
 }

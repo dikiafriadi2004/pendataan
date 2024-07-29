@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title')
-    Admin | Gampong
+    Admin | Kategori
 @endsection
 
 @push('css')
@@ -15,12 +15,12 @@
     <div class="codex-breadcrumb">
         <div class="row">
             <div class="col-md-6">
-                <h1 class="fs-5">Data Gampong</h1>
+                <h1 class="fs-5">Data Kategori</h1>
             </div>
             <div class="col-md-6">
                 <ul class="breadcrumb justify-content-end mb-0">
                     <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
-                    <li class="breadcrumb-item"><a class="text-light" href="#!">Data Gampong</a></li>
+                    <li class="breadcrumb-item"><a class="text-light" href="#!">Data Kategori</a></li>
                 </ul>
             </div>
         </div>
@@ -33,34 +33,19 @@
             <div class="row">
                 <div class="col-12">
                     <div class="card">
+                        <div class="card-header">
+                            <h4>Tambah Kategori</h4>
+                        </div>
                         <div class="card-body">
-                            <a href="{{ route('admin.villages.create') }}" class="btn btn-md btn-primary float-end mb-2" type="button">Tambah Data</a>
-                            <table class="display dataTable cell-border" id="basicdata-tbl" style="width:100%">
-                                <thead>
-                                    <tr>
-                                        <th>No</th>
-                                        <th>Gampong</th>
-                                        <th>Action </th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    @forelse ($villages as $village)
-                                    <tr>
-                                        <td>{{$loop->iteration}}</td>
-                                        <td>{{ $village->name }}</td>
-                                        <td>
-                                            <form action="{{ route('admin.villages.destroy', $village) }}" method="POST">
-                                                @csrf
-                                                @method('DELETE')
-                                                <button type="submit" class="btn btn-outline-danger">Hapus</button>
-                                            </form>
-                                        </td>
-                                    </tr>
-                                    @empty
-                                        Belum ada data terbaru
-                                    @endforelse
-                                </tbody>
-                            </table>
+                            <form action="{{ route('admin.categories.store') }}" method="POST">
+                                @csrf
+                                <div class="form-group">
+                                    <label class="form-label">Kategori</label>
+                                    <input class="form-control" type="text" id="name" name="name"
+                                        placeholder="Isi Nama Kategori" value="{{ old('name') }}">
+                                </div>
+                                <button class="btn btn-primary" type="submit">Simpan</button>
+                            </form>
                         </div>
                     </div>
                 </div>

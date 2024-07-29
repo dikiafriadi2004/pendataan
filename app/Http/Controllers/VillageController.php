@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Village;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use App\Http\Requests\StoreVillageRequest;
 
 class VillageController extends Controller
 {
@@ -12,7 +15,8 @@ class VillageController extends Controller
      */
     public function index()
     {
-        return view('admin.villages.index');
+        $villages = Village::orderByDesc('id')->get();
+        return view('admin.villages.index', compact('villages'));
     }
 
     /**
@@ -20,15 +24,22 @@ class VillageController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.villages.create');
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StoreVillageRequest $request)
     {
-        //
+        DB::transaction(function() use ($request) {
+            $validated = $request->validated();
+            $validated['slug'] = Str::slug($validated['name']);
+
+            $newData = Village::create($validated);
+        });
+
+        return redirect()->route('admin.villages.index');
     }
 
     /**

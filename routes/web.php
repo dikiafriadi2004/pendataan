@@ -36,6 +36,7 @@ Route::middleware('auth')->group(function () {
         Route::middleware('can:manage villages')->group(function () {
             Route::get('/add/member/{coordinator:slug}', [MemberController::class, 'create'])->name('member.create');
             Route::post('/add/member/{coordinator:slug}/store', [MemberController::class, 'store'])->name('member.store');
+            Route::delete('/coordinator/{coordinator:slug}/delete/{member}', [MemberController::class, 'destroy'])->name('member.destroy');
         });
     });
 });

@@ -22,4 +22,9 @@ class Member extends Model
     {
         return $this->belongsTo(Coordinator::class);
     }
+    
+    public function village()
+    {
+        return $this->belongsTo(Village::class);
+    }
 }

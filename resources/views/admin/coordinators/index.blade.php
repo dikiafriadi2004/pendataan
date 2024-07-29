@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title')
-    Admin | Gampong
+    Admin | Koordinator
 @endsection
 
 @push('css')
@@ -15,12 +15,12 @@
     <div class="codex-breadcrumb">
         <div class="row">
             <div class="col-md-6">
-                <h1 class="fs-5">Data Gampong</h1>
+                <h1 class="fs-5">Data Koordinator</h1>
             </div>
             <div class="col-md-6">
                 <ul class="breadcrumb justify-content-end mb-0">
                     <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
-                    <li class="breadcrumb-item"><a class="text-light" href="#!">Data Gampong</a></li>
+                    <li class="breadcrumb-item"><a class="text-light" href="#!">Data Koordinator</a></li>
                 </ul>
             </div>
         </div>
@@ -34,26 +34,28 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-body">
-                            <a href="{{ route('admin.villages.create') }}" class="btn btn-md btn-primary float-end mb-2" type="button">Tambah Data</a>
+                            <a href="{{ route('admin.coordinators.create') }}" class="btn btn-md btn-primary float-end mb-2" type="button">Tambah Data</a>
                             <table class="display dataTable cell-border" id="basicdata-tbl" style="width:100%">
                                 <thead>
                                     <tr>
                                         <th>No</th>
+                                        <th>NIK</th>
+                                        <th>Nama</th>
+                                        <th>No Handphone</th>
                                         <th>Gampong</th>
                                         <th>Action </th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @forelse ($villages as $village)
+                                    @forelse ($coordinators as $coordinator)
                                     <tr>
                                         <td>{{$loop->iteration}}</td>
-                                        <td>{{ $village->name }}</td>
+                                        <td>{{ $coordinator->nik }}</td>
+                                        <td>#K{{ $coordinator->id }} {{ $coordinator->name }}</td>
+                                        <td>{{ $coordinator->no_hp }}</td>
+                                        <td>{{ $coordinator->village->name }}</td>
                                         <td>
-                                            <form action="{{ route('admin.villages.destroy', $village) }}" method="POST">
-                                                @csrf
-                                                @method('DELETE')
-                                                <button type="submit" class="btn btn-outline-danger">Hapus</button>
-                                            </form>
+                                            <a href="{{ route('admin.coordinators.show', $coordinator) }}" class="btn btn-info">Detail</a>
                                         </td>
                                     </tr>
                                     @empty

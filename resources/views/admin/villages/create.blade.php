@@ -33,34 +33,22 @@
             <div class="row">
                 <div class="col-12">
                     <div class="card">
+                        <div class="card-header">
+                            <h4>Gampong</h4>
+                        </div>
                         <div class="card-body">
-                            <a href="{{ route('admin.villages.create') }}" class="btn btn-md btn-primary float-end mb-2" type="button">Tambah Data</a>
-                            <table class="display dataTable cell-border" id="basicdata-tbl" style="width:100%">
-                                <thead>
-                                    <tr>
-                                        <th>No</th>
-                                        <th>Gampong</th>
-                                        <th>Action </th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    @forelse ($villages as $village)
-                                    <tr>
-                                        <td>{{$loop->iteration}}</td>
-                                        <td>{{ $village->name }}</td>
-                                        <td>
-                                            <form action="{{ route('admin.villages.destroy', $village) }}" method="POST">
-                                                @csrf
-                                                @method('DELETE')
-                                                <button type="submit" class="btn btn-outline-danger">Hapus</button>
-                                            </form>
-                                        </td>
-                                    </tr>
-                                    @empty
-                                        Belum ada data terbaru
-                                    @endforelse
-                                </tbody>
-                            </table>
+                            <form action="{{ route('admin.villages.store') }}" method="POST">
+                                @csrf
+                                <div class="form-group">
+                                    <label class="form-label">Gampong</label>
+                                    <input class="form-control" type="text" id="name" name="name"
+                                        placeholder="Isi Nama Gampong" value="{{ old('name') }}">
+                                    @if ($errors->has('name'))
+                                        <div class="text-danger">{{ $errors->first('name') }}</div>
+                                    @endif
+                                </div>
+                                <button class="btn btn-primary" type="submit">Simpan</button>
+                            </form>
                         </div>
                     </div>
                 </div>

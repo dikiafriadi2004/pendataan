@@ -27,7 +27,7 @@ class StoreCoordinatorRequest extends FormRequest
             'name' => ['required', 'string', 'max:255'],
             'no_hp' => ['required', 'string', 'max:255'],
             'village_id' => ['required', 'integer'],
-            'category_id' => ['required', 'integer']
+            'category_id' => ['required', 'integer'],
         ];
     }
 }

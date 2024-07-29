@@ -9,20 +9,20 @@
             <li class="cdxmenu-title mt-0">
                 <h5>Dashboards</h5>
             </li>
-            <li class="menu-item"><a href="index.html">
+            <li class="menu-item"><a href="{{ route('dashboard') }}">
                     <div class="icon-item"><i data-feather="home"></i></div><span>Dashboard</span>
                 </a></li>
             <li class="cdxmenu-title">
                 <h5>application</h5>
             </li>
             <li class="menu-item"><a href="{{ route('admin.villages.index') }}">
-                    <div class="icon-item"><i data-feather="calendar"></i></div><span>Gampong</span>
+                    <div class="icon-item"><i data-feather="map-pin"></i></div><span>Gampong</span>
                 </a></li>
             <li class="menu-item"><a href="{{ route('admin.categories.index') }}">
                     <div class="icon-item"><i data-feather="message-square"></i></div><span>Kategory</span>
                 </a></li>
             <li class="menu-item"><a href="{{ route('admin.coordinators.index') }}">
-                    <div class="icon-item"><i data-feather="clock"></i></div><span>Koordinator</span>
+                    <div class="icon-item"><i data-feather="users"></i></div><span>Koordinator</span>
                 </a></li>
         </ul>
     </div>
