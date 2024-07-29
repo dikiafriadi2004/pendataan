@@ -12,7 +12,7 @@ class VillageController extends Controller
      */
     public function index()
     {
-        //
+        return view('admin.villages.index');
     }
 
     /**
