@@ -71,6 +71,10 @@ class VillageController extends Controller
      */
     public function destroy(Village $village)
     {
-        //
+        DB::transaction(function() use ($village) {
+            $village->delete();
+        });
+
+        return redirect()->route('admin.categories.index');
     }
 }
