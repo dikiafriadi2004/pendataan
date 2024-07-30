@@ -48,13 +48,13 @@
                                     <tr>
                                         <td>{{$loop->iteration}}</td>
                                         <td>{{ $category->name }}</td>
-                                        <td>
+                                        {{-- <td>
                                             <form action="{{ route('admin.categories.destroy', $category) }}" method="POST">
                                                 @csrf
                                                 @method('DELETE')
                                                 <button type="submit" class="btn btn-outline-danger">Hapus</button>
                                             </form>
-                                        </td>
+                                        </td> --}}
                                     </tr>
                                     @empty
                                         Belum ada data terbaru

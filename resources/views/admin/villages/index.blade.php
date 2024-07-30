@@ -48,13 +48,13 @@
                                     <tr>
                                         <td>{{$loop->iteration}}</td>
                                         <td>{{ $village->name }}</td>
-                                        <td>
+                                        {{-- <td>
                                             <form action="{{ route('admin.villages.destroy', $village) }}" method="POST">
                                                 @csrf
                                                 @method('DELETE')
                                                 <button type="submit" class="btn btn-outline-danger">Hapus</button>
                                             </form>
-                                        </td>
+                                        </td> --}}
                                     </tr>
                                     @empty
                                         Belum ada data terbaru
