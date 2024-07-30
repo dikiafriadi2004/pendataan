@@ -35,7 +35,18 @@
                             <h4>Anggota</h4>
                         </div>
                         <div class="card-body">
-                            <form action="{{ route('admin.member.store', $coordinator->slug) }}" method="POST" enctype="multipart/form-data">
+                            @if (Session::has('success'))
+                            <div class="alert alert-success" role="alert">
+                                {!! Session::get('success') !!}
+                            </div>
+                                {{-- <div class="alert alert-success">
+                                    <ul>
+                                        <li></li>
+                                    </ul>
+                                </div> --}}
+                            @endif
+                            <form action="{{ route('admin.member.store', $coordinator->slug) }}" method="POST"
+                                enctype="multipart/form-data">
                                 @csrf
                                 <div class="form-group">
                                     <label class="form-label">Nama</label>
@@ -48,7 +59,7 @@
                                 <div class="form-group">
                                     <label class="form-label">NIK</label>
                                     <input class="form-control" type="text" id="nik" name="nik"
-                                        placeholder="Isi NIK" value="{{ old('nik') }}">
+                                        placeholder="Isi NIK" value="{{ old('nik') }}" maxlength="16">
                                     @if ($errors->has('nik'))
                                         <div class="text-danger">{{ $errors->first('nik') }}</div>
                                     @endif
@@ -56,7 +67,7 @@
                                 <div class="form-group">
                                     <label class="form-label">No Handphone</label>
                                     <input class="form-control" type="text" id="no_hp" name="no_hp"
-                                        placeholder="Isi No Handphone" value="{{ old('no_hp') }}">
+                                        placeholder="Isi No Handphone" value="{{ old('no_hp') }}" maxlength="13">
                                     @if ($errors->has('no_hp'))
                                         <div class="text-danger">{{ $errors->first('no_hp') }}</div>
                                     @endif

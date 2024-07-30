@@ -43,7 +43,9 @@ class MemberController extends Controller
             $member = Member::create($validated);
         });
 
-        return redirect()->route('admin.coordinators.show', $coordinator->id);
+        return redirect()->back()->with('success', 'Data anggota berhasil ditambahkan');
+
+        // return redirect()->route('admin.coordinators.show', $coordinator->id);
     }
 
     /**
