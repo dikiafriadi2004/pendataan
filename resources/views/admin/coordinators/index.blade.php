@@ -53,7 +53,7 @@
                                         <td>{{ $coordinator->nik }}</td>
                                         <td>#K{{ $coordinator->id }} {{ $coordinator->name }}</td>
                                         <td>{{ $coordinator->no_hp }}</td>
-                                        <td>{{ $coordinator->village->name }}</td>
+                                        <td>{{ $coordinator->village->name ?? '' }}</td>
                                         <td>
                                             <a href="{{ route('admin.coordinators.show', $coordinator) }}" class="btn btn-info">Detail</a>
                                         </td>

@@ -8,9 +8,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Coordinator extends Model
 {
-    use HasFactory, SoftDeletes;
-
-    use HasFactory, SoftDeletes;
+    use HasFactory;
 
     protected $fillable = [
         'nik',
