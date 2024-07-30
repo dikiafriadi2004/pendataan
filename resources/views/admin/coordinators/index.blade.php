@@ -33,6 +33,11 @@
             <div class="row">
                 <div class="col-12">
                     <div class="card">
+                        @if (Session::has('success'))
+                        <div class="alert alert-success" role="alert">
+                            {!! Session::get('success') !!}
+                        </div>
+                        @endif
                         <div class="card-body">
                             <a href="{{ route('admin.coordinators.create') }}" class="btn btn-md btn-primary float-end mb-2" type="button">Tambah Data</a>
                             <table class="display dataTable cell-border" id="basicdata-tbl" style="width:100%">

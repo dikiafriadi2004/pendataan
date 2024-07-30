@@ -33,8 +33,14 @@
             <div class="row">
                 <div class="col-12">
                     <div class="card">
+                        @if (Session::has('success'))
+                            <div class="alert alert-success" role="alert">
+                                {!! Session::get('success') !!}
+                            </div>
+                        @endif
                         <div class="card-body">
-                            <a href="{{ route('admin.villages.create') }}" class="btn btn-md btn-primary float-end mb-2" type="button">Tambah Data</a>
+                            <a href="{{ route('admin.villages.create') }}" class="btn btn-md btn-primary float-end mb-2"
+                                type="button">Tambah Data</a>
                             <table class="display dataTable cell-border" id="basicdata-tbl" style="width:100%">
                                 <thead>
                                     <tr>
@@ -45,17 +51,21 @@
                                 </thead>
                                 <tbody>
                                     @forelse ($villages as $village)
-                                    <tr>
-                                        <td>{{$loop->iteration}}</td>
-                                        <td>{{ $village->name }}</td>
-                                        {{-- <td>
+                                        <tr>
+                                            <td>{{ $loop->iteration }}</td>
+                                            <td>{{ $village->name }}</td>
+                                            <td>
+                                                <a href="{{ route('admin.villages.edit', $village) }}"
+                                                    class="btn btn-outline-primary">Ubah</a>
+                                            </td>
+                                            {{-- <td>
                                             <form action="{{ route('admin.villages.destroy', $village) }}" method="POST">
                                                 @csrf
                                                 @method('DELETE')
                                                 <button type="submit" class="btn btn-outline-danger">Hapus</button>
                                             </form>
                                         </td> --}}
-                                    </tr>
+                                        </tr>
                                     @empty
                                         Belum ada data terbaru
                                     @endforelse

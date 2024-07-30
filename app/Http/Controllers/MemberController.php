@@ -9,6 +9,7 @@ use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Requests\StoreMemberRequest;
+use App\Http\Requests\UpdateMemberRequest;
 
 class MemberController extends Controller
 {
@@ -59,17 +60,26 @@ class MemberController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Member $member)
+    public function edit(Coordinator $coordinator, Member $member)
     {
-        //
+        $villages = Village::orderByDesc('id')->get();
+        return view('admin.members.edit', compact('member', 'coordinator', 'villages'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Member $member)
+    public function update(UpdateMemberRequest $request, Member $member)
     {
-        //
+        DB::transaction(function () use ($request, $member) {
+            $validated = $request->validated();
+            $validated['slug'] = Str::slug($validated['name']);
+
+            $member->update($validated);
+        });
+
+        // return redirect()->back()->with('success', 'Data anggota berhasil diubah');
+        return redirect()->route('admin.coordinators.show', $member->coordinator_id)->with('success', 'Data anggota berhasil diubah');
     }
 
     /**

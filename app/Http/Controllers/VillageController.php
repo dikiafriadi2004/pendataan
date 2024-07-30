@@ -7,6 +7,7 @@ use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Requests\StoreVillageRequest;
+use App\Http\Requests\UpdateVillageRequest;
 
 class VillageController extends Controller
 {
@@ -55,15 +56,22 @@ class VillageController extends Controller
      */
     public function edit(Village $village)
     {
-        //
+        return view('admin.villages.edit', compact('village'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Village $village)
+    public function update(UpdateVillageRequest $request, Village $village)
     {
-        //
+        DB::transaction(function() use ($request, $village) {
+            $validated = $request->validated();
+            $validated['slug'] = Str::slug($validated['name']);
+
+            $village->update($validated);
+        });
+
+        return redirect()->route('admin.villages.index')->with('success', 'Data gampong berhasil diubah');
     }
 
     /**

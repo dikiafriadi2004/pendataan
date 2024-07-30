@@ -33,6 +33,11 @@
             <div class="row">
                 <div class="col-12">
                     <div class="card">
+                        @if (Session::has('success'))
+                            <div class="alert alert-success" role="alert">
+                                {!! Session::get('success') !!}
+                            </div>
+                        @endif
                         <div class="card-body">
                             <a href="{{ route('admin.categories.create') }}" class="btn btn-md btn-primary float-end mb-2" type="button">Tambah Data</a>
                             <table class="display dataTable cell-border" id="basicdata-tbl" style="width:100%">
@@ -49,7 +54,8 @@
                                         <td>{{$loop->iteration}}</td>
                                         <td>{{ $category->name }}</td>
                                         <td>
-                                            <a href="{{ route('admin.categories.show', $category) }}" class="btn btn-info">Detail</a>
+                                            <a href="{{ route('admin.categories.show', $category) }}" class="btn btn-outline-info">Detail</a>
+                                            <a href="{{ route('admin.categories.edit', $category) }}" class="btn btn-outline-primary">Ubah</a>
                                         </td>
                                         {{-- <td>
                                             <form action="{{ route('admin.categories.destroy', $category) }}" method="POST">
