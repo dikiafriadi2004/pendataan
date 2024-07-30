@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title')
-    Admin | Kategori
+    Admin | Detail Kategori
 @endsection
 
 @push('css')
@@ -12,50 +12,51 @@
 @endpush
 
 @section('breadcrumb')
-    <div class="codex-breadcrumb">
-        <div class="row">
-            <div class="col-md-6">
-                <h1 class="fs-5">Data Kategori</h1>
-            </div>
-            <div class="col-md-6">
-                <ul class="breadcrumb justify-content-end mb-0">
-                    <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
-                    <li class="breadcrumb-item"><a class="text-light" href="#!">Data Kategori</a></li>
-                </ul>
-            </div>
+<div class="codex-breadcrumb">
+    <div class="row">
+        <div class="col-md-6">
+            <h1 class="fs-5">Data Kategori</h1>
+        </div>
+        <div class="col-md-6">
+            <ul class="breadcrumb justify-content-end mb-0">
+                <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
+                <li class="breadcrumb-item"><a class="text-light" href="#!">Detail Kategori</a></li>
+            </ul>
         </div>
     </div>
+</div>
 @endsection
 
 @section('content')
-    <div class="theme-body">
-        <div class="custom-container">
-            <div class="row">
-                <div class="col-12">
-                    <div class="card">
-                        <div class="card-body">
-                            <a href="{{ route('admin.categories.create') }}" class="btn btn-md btn-primary float-end mb-2" type="button">Tambah Data</a>
+<div class="theme-body">
+    <div class="custom-container">
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-body">
                             <table class="display dataTable cell-border" id="basicdata-tbl" style="width:100%">
                                 <thead>
                                     <tr>
                                         <th>No</th>
+                                        <th>NIK</th>
+                                        <th>Nama</th>
                                         <th>Kategori</th>
-                                        <th>Action</th>
+                                        {{-- <th>Action </th> --}}
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @forelse ($categories as $category)
+                                    @forelse ($category->coordinators as $coordinator)
                                     <tr>
                                         <td>{{$loop->iteration}}</td>
+                                        <td>{{ $coordinator->nik }}</td>
+                                        <td>{{ $coordinator->name }}</td>
                                         <td>{{ $category->name }}</td>
-                                        <td>
-                                            <a href="{{ route('admin.categories.show', $category) }}" class="btn btn-info">Detail</a>
-                                        </td>
                                         {{-- <td>
-                                            <form action="{{ route('admin.categories.destroy', $category) }}" method="POST">
+                                            <form action="{{ route('admin.member.destroy', [$coordinator->slug, $member]) }}" method="POST">
                                                 @csrf
                                                 @method('DELETE')
-                                                <button type="submit" class="btn btn-outline-danger">Hapus</button>
+                                                <button class="btn btn-danger" type="submit">Hapus</button>
+
                                             </form>
                                         </td> --}}
                                     </tr>
@@ -64,12 +65,12 @@
                                     @endforelse
                                 </tbody>
                             </table>
-                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+</div>
 @endsection
 
 @push('script')

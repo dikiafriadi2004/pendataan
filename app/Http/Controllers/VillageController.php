@@ -47,7 +47,7 @@ class VillageController extends Controller
      */
     public function show(Village $village)
     {
-        //
+        // 
     }
 
     /**
