@@ -11,7 +11,7 @@ class UpdateCoordinatorRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,11 @@ class UpdateCoordinatorRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'nik' => ['required', 'string', 'max:255'],
+            'name' => ['required', 'string', 'max:255'],
+            'no_hp' => ['required', 'string', 'max:255'],
+            'village_id' => ['required', 'integer'],
+            'category_id' => ['required', 'integer'],
         ];
     }
 }

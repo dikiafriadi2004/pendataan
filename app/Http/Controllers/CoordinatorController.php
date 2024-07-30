@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreCoordinatorRequest;
+use App\Http\Requests\UpdateCoordinatorRequest;
 use App\Models\Village;
 use App\Models\Category;
 use App\Models\Coordinator;
@@ -61,15 +62,24 @@ class CoordinatorController extends Controller
      */
     public function edit(Coordinator $coordinator)
     {
-        //
+        $villages = Village::orderByDesc('id')->get();
+        $categories = Category::orderByDesc('id')->get();
+        return view('admin.coordinators.edit', compact('coordinator', 'villages', 'categories'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Coordinator $coordinator)
+    public function update(UpdateCoordinatorRequest $request, Coordinator $coordinator)
     {
-        //
+        DB::transaction(function() use ($request, $coordinator) {
+            $validated = $request->validated();
+            $validated['slug'] = Str::slug($validated['name']);
+
+            $coordinator->update($validated);
+        });
+
+        return redirect()->route('admin.coordinators.index')->with('success', 'Data koordinator berhasil diubah');
     }
 
     /**

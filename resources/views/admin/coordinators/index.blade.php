@@ -61,6 +61,7 @@
                                         <td>{{ $coordinator->village->name ?? '' }}</td>
                                         <td>
                                             <a href="{{ route('admin.coordinators.show', $coordinator) }}" class="btn btn-info">Detail</a>
+                                            <a href="{{ route('admin.coordinators.edit', $coordinator) }}" class="btn btn-primary">Ubah</a>
                                         </td>
                                     </tr>
                                     @empty

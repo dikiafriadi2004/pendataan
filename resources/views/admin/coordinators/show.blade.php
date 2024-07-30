@@ -46,7 +46,8 @@
                                     </li>
                                     <li><span>NIK : </span>{{ $coordinator->nik }}
                                     </li>
-                                    <li><span>No Handphone : </span>{{ $coordinator->no_hp }}
+                                    <li><span>No Handphone : </span>{{ $coordinator->no_hp }}</li>
+                                    <li><span>Kategori : </span>{{ $coordinator->category->name }}</li>
                                 </ul>
                             </div>
                             <a href="{{ route('admin.member.create', $coordinator->slug) }}"
