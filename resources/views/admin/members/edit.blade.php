@@ -66,13 +66,14 @@
                                 <div class="form-group">
                                     <label class="form-label">Gampong</label>
                                     <select class="form-control hidesearch" id="village_id" name="village_id">
-                                        <option value="{{ $member->village_id }}" selected>{{ $member->village->name }}</option>
+                                        <option value="{{ $member->village_id }}" selected disabled>
+                                            {{ $member->village->name }}</option>
                                         @foreach ($villages as $village)
                                             <option value="{{ $village->id }}">{{ $village->name }}</option>
                                         @endforeach
                                     </select>
                                 </div>
-                                <button class="btn btn-primary" type="submit">Simpan</button>
+                                <button class="btn btn-primary" type="submit">Ubah</button>
                             </form>
                         </div>
                     </div>

@@ -22,10 +22,10 @@ class UpdateMemberRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'nik' => ['required', 'string', 'max:255'],
-            'name' => ['required', 'string', 'max:255'],
-            'no_hp' => ['required', 'string', 'max:255'],
-            'village_id' => ['required', 'integer'],
+            'nik' => ['string', 'max:255'],
+            'name' => ['string', 'max:255'],
+            'no_hp' => ['string', 'max:255'],
+            'village_id' => ['integer'],
         ];
     }
 }

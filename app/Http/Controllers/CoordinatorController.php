@@ -46,7 +46,7 @@ class CoordinatorController extends Controller
             $newCoordinator = Coordinator::create($validated);
         });
 
-        return redirect()->route('admin.coordinators.index');
+        return redirect()->route('admin.coordinators.index')->with('success', 'Data koordinator berhasil ditambah');
     }
 
     /**

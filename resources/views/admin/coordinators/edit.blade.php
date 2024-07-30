@@ -57,7 +57,7 @@
                                 <div class="form-group">
                                     <label class="form-label">Kategori</label>
                                     <select class="form-control hidesearch" id="category_id" name="category_id">
-                                        <option value="{{ $coordinator->category_id }}" selected>{{ $coordinator->category->name }}</option>
+                                        <option value="{{ $coordinator->category_id }}" selected disabled>{{ $coordinator->category->name }}</option>
                                         @foreach ($categories as $category)
                                             <option value="{{ $category->id }}">{{ $category->name }}</option>
                                         @endforeach
@@ -74,13 +74,13 @@
                                 <div class="form-group">
                                     <label class="form-label">Gampong</label>
                                     <select class="form-control hidesearch" id="village_id" name="village_id">
-                                        <option value="{{ $coordinator->village_id }}" selected>{{ $coordinator->village->name }}</option>
+                                        <option value="{{ $coordinator->village_id }}" selected disabled>{{ $coordinator->village->name }}</option>
                                         @foreach ($villages as $village)
                                             <option value="{{ $village->id }}">{{ $village->name }}</option>
                                         @endforeach
                                     </select>
                                 </div>
-                                <button class="btn btn-primary" type="submit">Simpan</button>
+                                <button class="btn btn-primary" type="submit">Ubah</button>
                             </form>
                         </div>
                     </div>
