@@ -40,7 +40,7 @@
                                     <tr>
                                         <th>No</th>
                                         <th>Kategori</th>
-                                        <th>Action </th>
+                                        {{-- <th>Action </th> --}}
                                     </tr>
                                 </thead>
                                 <tbody>
