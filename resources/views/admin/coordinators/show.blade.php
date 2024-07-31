@@ -57,6 +57,7 @@
                                 <thead>
                                     <tr>
                                         <th>No</th>
+                                        <th>No</th>
                                         <th>NIK</th>
                                         <th>Nama</th>
                                         <th>No Handphone</th>
@@ -68,6 +69,7 @@
                                     @forelse ($coordinator->members as $member)
                                         <tr>
                                             <td>{{ $loop->iteration }}</td>
+                                            <td>{{ $member->id }}</td>
                                             <td>{{ $member->nik }}</td>
                                             <td>{{ $member->name }}</td>
                                             <td>{{ $member->no_hp }}</td>

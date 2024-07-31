@@ -65,7 +65,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label class="form-label">Gampong</label>
-                                    <select class="form-control hidesearch" id="village_id" name="village_id">
+                                    <select class="form-control basic-select" id="village_id" name="village_id">
                                         <option value="{{ $member->village_id }}" selected disabled>
                                             {{ $member->village->name }}</option>
                                         @foreach ($villages as $village)

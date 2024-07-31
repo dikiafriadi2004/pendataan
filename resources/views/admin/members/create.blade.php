@@ -70,7 +70,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label class="form-label">Gampong</label>
-                                    <select class="form-control hidesearch" id="village_id" name="village_id">
+                                    <select class="form-control basic-select" id="village_id" name="village_id">
                                         <option disabled selected>--- Pilih Gampong ---</option>
                                         @foreach ($villages as $village)
                                             <option value="{{ $village->id }}">{{ $village->name }}</option>
