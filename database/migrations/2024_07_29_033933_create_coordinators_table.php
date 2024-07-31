@@ -19,7 +19,6 @@ return new class extends Migration
             $table->string('no_hp');
             $table->foreignId('village_id')->constrained()->onDelete('cascade');
             $table->foreignId('category_id')->constrained()->onDelete('cascade');
-            $table->softDeletes();
             $table->timestamps();
         });
     }

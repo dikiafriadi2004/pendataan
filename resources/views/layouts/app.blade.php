@@ -69,6 +69,9 @@
     <script src="{{ asset('assets/js/bootstrap.bundle.min.js') }}"></script>
     <!-- Scrollbar-->
     <script src="{{ asset('assets/js/vendors/simplebar.js') }}"></script>
+    <!-- Sweetalert2 -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    
     @stack('script')
     <!-- dashboard-->
     <script src="{{ asset('assets/js/dashboard/dashboard.js') }}"></script>

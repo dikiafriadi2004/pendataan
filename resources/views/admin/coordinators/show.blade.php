@@ -33,11 +33,12 @@
             <div class="row">
                 <div class="col-12">
                     <div class="card">
-                        @if (Session::has('success'))
+                        {{-- @if (Session::has('success'))
                             <div class="alert alert-success" role="alert">
                                 {!! Session::get('success') !!}
                             </div>
-                        @endif
+                        @endif --}}
+                        <div class="swal-notif" data-swal="{!! Session::get('success') !!}"></div>
                         <div class="card-body">
                             <div class="user-detail mb-4">
                                 <h5 class="text-primary mb-2"> <i class="fa fa-info-circle me-2"></i>Informasi</h5>
@@ -79,8 +80,8 @@
                                                     method="POST">
                                                     @csrf
                                                     @method('DELETE')
-                                                    <button class="btn btn-danger" type="submit">Hapus</button>
-
+                                                    <button class="btn btn-outline-danger confirm-delete"
+                                                        type="submit">Hapus</button>
                                                 </form>
                                             </td>
                                         </tr>
@@ -107,4 +108,45 @@
     <script src="{{ asset('assets/js/vendors/datatable/vfs_fonts.js') }}"></script>
     <script src="{{ asset('assets/js/vendors/datatable/buttons.html5.min.js') }}"></script>
     <script src="{{ asset('assets/js/vendors/datatable/custom-datatable.js') }}"></script>
+
+    <script type="text/javascript">
+        $(".confirm-delete").click(function(event) {
+            const form = $(this).closest("form")
+
+            event.preventDefault()
+
+            Swal.fire({
+                title: "Anda Yakin?",
+                text: "Data akan terhapus!",
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#3085d6",
+                cancelButtonColor: "#d33",
+                confirmButtonText: "Hapus!"
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    Swal.fire({
+                        title: "Hapus!",
+                        text: "Data berhasil dihapus.",
+                        icon: "success",
+                        showConfirmButton: false,
+                        timer: 2000
+                    })
+                    form.submit()
+                }
+            });
+        })
+
+        const swal = $('.swal-notif').data('swal');
+        if (swal) {
+            Swal.fire({
+                'title': 'Success',
+                'text': swal,
+                'icon': 'success',
+                'showConfirmButton': false,
+                'timer': 2000
+
+            })
+        }
+    </script>
 @endpush

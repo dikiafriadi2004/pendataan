@@ -11,16 +11,18 @@
             <ul class="nav-iconlist">
                 <li class="nav-profile">
                     <div class="media">
-                        <div class="user-icon"><img class="img-fluid rounded-50" src="assets/images/avtar/3.jpg"
-                                alt="logo"></div>
+                        {{-- <div class="user-icon">
+                            <img class="img-fluid rounded-50" src="assets/images/avtar/3.jpg"
+                                alt="logo">
+                            </div> --}}
                         <div class="media-body">
                             <h6>{{ Auth::user()->name }}</h6><span class="text-light">{{ Auth::user()->email }}</span>
                         </div>
                     </div>
                     <div class="hover-dropdown navprofile-drop">
                         <ul>
-                            <li><a href="profile.html"><i class="me-2 align-middle" data-feather="user"></i>profile</a>
-                            </li>
+                            {{-- <li><a href="profile.html"><i class="me-2 align-middle" data-feather="user"></i>profile</a>
+                            </li> --}}
                             <li>
                                 <form method="POST" action="{{ route('logout') }}">
                                     @csrf

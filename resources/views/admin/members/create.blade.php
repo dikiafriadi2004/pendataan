@@ -35,16 +35,12 @@
                             <h4>Anggota</h4>
                         </div>
                         <div class="card-body">
-                            @if (Session::has('success'))
+                            <div class="swal" data-swal="{!! Session::get('success') !!}"></div>
+                            {{-- @if (Session::has('success'))
                             <div class="alert alert-success" role="alert">
                                 {!! Session::get('success') !!}
                             </div>
-                                {{-- <div class="alert alert-success">
-                                    <ul>
-                                        <li></li>
-                                    </ul>
-                                </div> --}}
-                            @endif
+                            @endif --}}
                             <form action="{{ route('admin.member.store', $coordinator->slug) }}" method="POST"
                                 enctype="multipart/form-data">
                                 @csrf
@@ -95,4 +91,16 @@
     <!-- select 2 js-->
     <script src="{{ asset('assets/js/vendors/select2/select2.min.js') }}"></script>
     <script src="{{ asset('assets/js/vendors/select2/custom-select2.js') }}"></script>
+
+    <script type="text/javascript">
+        const swal = $('.swal').data('swal');
+        if (swal) {
+            Swal.fire({
+                'title': 'Success',
+                'text': swal,
+                'icon': 'success',
+
+            })
+        }
+    </script>
 @endpush

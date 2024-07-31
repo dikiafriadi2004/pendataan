@@ -33,11 +33,7 @@
             <div class="row">
                 <div class="col-12">
                     <div class="card">
-                        @if (Session::has('success'))
-                            <div class="alert alert-success" role="alert">
-                                {!! Session::get('success') !!}
-                            </div>
-                        @endif
+                        <div class="swal-notif" data-swal="{!! Session::get('success') !!}"></div>
                         <div class="card-body">
                             <a href="{{ route('admin.villages.create') }}" class="btn btn-md btn-primary float-end mb-2"
                                 type="button">Tambah Data</a>
@@ -89,4 +85,18 @@
     <script src="{{ asset('assets/js/vendors/datatable/vfs_fonts.js') }}"></script>
     <script src="{{ asset('assets/js/vendors/datatable/buttons.html5.min.js') }}"></script>
     <script src="{{ asset('assets/js/vendors/datatable/custom-datatable.js') }}"></script>
+
+    <script type="text/javascript">
+        const swal = $('.swal-notif').data('swal');
+        if (swal) {
+            Swal.fire({
+                'title': 'Success',
+                'text': swal,
+                'icon': 'success',
+                'showConfirmButton': false,
+                'timer': 2000
+
+            })
+        }
+    </script>
 @endpush
