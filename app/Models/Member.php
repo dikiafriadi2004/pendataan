@@ -13,6 +13,7 @@ class Member extends Model
         'nik',
         'name',
         'no_hp',
+        'tps',
         'village_id',
         'coordinator_id'
     ];

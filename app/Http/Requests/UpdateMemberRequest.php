@@ -24,6 +24,7 @@ class UpdateMemberRequest extends FormRequest
         return [
             'nik' => ['string', 'max:255'],
             'name' => ['string', 'max:255'],
+            'tps' => ['string', 'max:255'],
             'no_hp' => ['string', 'max:255'],
             'village_id' => ['integer'],
         ];

@@ -77,6 +77,14 @@
                                         @endforeach
                                     </select>
                                 </div>
+                                <div class="form-group">
+                                    <label class="form-label">TPS</label>
+                                    <input class="form-control" type="text" id="tps" name="tps"
+                                        placeholder="Isi TPS" value="{{ old('tps') }}">
+                                    @if ($errors->has('tps'))
+                                        <div class="text-danger">{{ $errors->first('tps') }}</div>
+                                    @endif
+                                </div>
                                 <button class="btn btn-primary" type="submit">Simpan</button>
                             </form>
                         </div>

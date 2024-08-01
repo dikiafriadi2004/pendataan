@@ -40,7 +40,7 @@ class VillageController extends Controller
             $newData = Village::create($validated);
         });
 
-        return redirect()->route('admin.villages.index');
+        return redirect()->route('admin.villages.index')->with('success', 'Data gampong berhasil ditambah');
     }
 
     /**

@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('nik')->unique();
             $table->string('name');
             $table->string('no_hp');
+            $table->string('tps');
             $table->foreignId('village_id')->constrained()->onDelete('cascade');
             $table->foreignId('coordinator_id')->constrained()->onDelete('cascade');
             $table->timestamps();

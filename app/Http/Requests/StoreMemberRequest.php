@@ -25,6 +25,7 @@ class StoreMemberRequest extends FormRequest
         return [
             'nik' => ['required', 'string', 'max:255', 'unique:'.Member::class],
             'name' => ['required', 'string', 'max:255'],
+            'tps' => ['string', 'max:255'],
             'no_hp' => ['required', 'string', 'max:255'],
             'village_id' => ['required', 'integer'],
         ];
