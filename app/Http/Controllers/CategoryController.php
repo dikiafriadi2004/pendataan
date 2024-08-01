@@ -40,7 +40,7 @@ class CategoryController extends Controller
             $newCategory = Category::create($validated);
         });
 
-        return redirect()->route('admin.categories.index')->with('success', 'Data Kategori berhasil diubah');
+        return redirect()->route('admin.categories.index')->with('success', 'Data Kategori berhasil ditambah');
     }
 
     /**

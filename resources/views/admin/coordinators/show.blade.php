@@ -57,11 +57,11 @@
                                 <thead>
                                     <tr>
                                         <th>No</th>
-                                        <th>No</th>
                                         <th>NIK</th>
                                         <th>Nama</th>
                                         <th>No Handphone</th>
                                         <th>Gampong</th>
+                                        <th>TPS</th>
                                         <th>Action </th>
                                     </tr>
                                 </thead>
@@ -69,11 +69,11 @@
                                     @forelse ($coordinator->members as $member)
                                         <tr>
                                             <td>{{ $loop->iteration }}</td>
-                                            <td>{{ $member->id }}</td>
                                             <td>{{ $member->nik }}</td>
                                             <td>{{ $member->name }}</td>
                                             <td>{{ $member->no_hp }}</td>
                                             <td>{{ $member->village->name }}</td>
+                                            <td>{{ $member->tps }}</td>
                                             <td>
                                                 <a href="{{ route('admin.member.edit', [$coordinator->slug, $member]) }}"
                                                     class="btn btn-outline-primary mb-2">Ubah</a>
