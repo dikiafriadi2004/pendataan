@@ -21,6 +21,12 @@ class CoordinatorController extends Controller
     {
         $villages = Village::orderByDesc('id')->get();
         $coordinators = Coordinator::with(['members'])->orderByDesc('id')->get();
+
+        if(request('output') == 'pdf') {
+            $pdf = Pdf::loadView('admin.coordinators.printcoordinator', compact('coordinators'))->setPaper('a4', 'landscape');
+            return $pdf->download('print_koordinator.pdf');
+        } 
+
         return view('admin.coordinators.index', compact('coordinators', 'villages'));
     }
 

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Category;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Support\Facades\DB;
 use App\Http\Requests\StoreCategoryRequest;
 use App\Http\Requests\UpdateCategoryRequest;
@@ -48,6 +49,10 @@ class CategoryController extends Controller
      */
     public function show(Category $category)
     {
+        if(request('output') == 'pdf') {
+            $pdf = Pdf::loadView('admin.categories.print', compact('category'))->setPaper('a4', 'portrait');
+            return $pdf->download('print_categories.pdf');
+        } 
         return view('admin.categories.show', compact('category'));
     }
 

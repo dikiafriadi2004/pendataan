@@ -12,7 +12,7 @@
             <li class="cdxmenu-title mt-0">
                 <h5>Dashboards</h5>
             </li>
-            <li class="menu-item"><a href="{{ route('dashboard') }}">
+            <li class="menu-item"><a href="{{ route('admin.dashboard') }}">
                     <div class="icon-item"><i data-feather="home"></i></div><span>Dashboard</span>
                 </a></li>
             <li class="cdxmenu-title">

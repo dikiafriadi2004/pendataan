@@ -34,6 +34,7 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-body">
+                        <a href="{{ route('admin.categories.show', $category). '?output=pdf' }}" class="btn btn-md btn-outline-secondary mb-2" type="button">Export PDF</a>
                             <table class="display dataTable cell-border" id="basicdata-tbl" style="width:100%">
                                 <thead>
                                     <tr>
