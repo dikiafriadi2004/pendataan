@@ -2,14 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\StoreCoordinatorRequest;
-use App\Http\Requests\UpdateCoordinatorRequest;
 use App\Models\Village;
 use App\Models\Category;
 use App\Models\Coordinator;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Support\Facades\DB;
+use App\Http\Requests\StoreCoordinatorRequest;
+use App\Http\Requests\UpdateCoordinatorRequest;
 
 class CoordinatorController extends Controller
 {
@@ -54,6 +55,11 @@ class CoordinatorController extends Controller
      */
     public function show(Coordinator $coordinator)
     {
+
+        if(request('output') == 'pdf') {
+            $pdf = Pdf::loadView('admin.coordinators.print', compact('coordinator'))->setPaper('a4', 'landscape');
+            return $pdf->download('print.pdf');
+        } 
         return view('admin.coordinators.show', compact('coordinator'));
     }
 

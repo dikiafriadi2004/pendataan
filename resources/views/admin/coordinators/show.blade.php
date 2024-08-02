@@ -51,17 +51,19 @@
                                     <li><span>Kategori : </span>{{ $coordinator->category->name }}</li>
                                 </ul>
                             </div>
+                            <a href="{{ route('admin.coordinators.show', $coordinator). '?output=pdf' }}"
+                                class="btn btn-md btn-primary mb-2" type="button">Export PDF</a>
                             <a href="{{ route('admin.member.create', $coordinator->slug) }}"
                                 class="btn btn-md btn-primary float-end mb-2" type="button">Tambah Data</a>
                             <table class="display dataTable cell-border" id="basicdata-tbl" style="width:100%">
                                 <thead>
                                     <tr>
                                         <th>No</th>
-                                        <th>No</th>
                                         <th>NIK</th>
                                         <th>Nama</th>
                                         <th>No Handphone</th>
                                         <th>Gampong</th>
+                                        <th>TPS</th>
                                         <th>Action </th>
                                     </tr>
                                 </thead>
@@ -69,11 +71,11 @@
                                     @forelse ($coordinator->members as $member)
                                         <tr>
                                             <td>{{ $loop->iteration }}</td>
-                                            <td>{{ $member->id }}</td>
                                             <td>{{ $member->nik }}</td>
                                             <td>{{ $member->name }}</td>
                                             <td>{{ $member->no_hp }}</td>
                                             <td>{{ $member->village->name }}</td>
+                                            <td>{{ $member->tps }}</td>
                                             <td>
                                                 <a href="{{ route('admin.member.edit', [$coordinator->slug, $member]) }}"
                                                     class="btn btn-outline-primary mb-2">Ubah</a>
