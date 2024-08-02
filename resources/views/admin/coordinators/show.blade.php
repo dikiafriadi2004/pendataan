@@ -52,9 +52,9 @@
                                 </ul>
                             </div>
                             <a href="{{ route('admin.coordinators.show', $coordinator). '?output=pdf' }}"
-                                class="btn btn-md btn-primary mb-2" type="button">Export PDF</a>
+                                class="btn btn-md btn-outline-secondary mb-2" type="button">Export PDF</a>
                             <a href="{{ route('admin.member.create', $coordinator->slug) }}"
-                                class="btn btn-md btn-primary float-end mb-2" type="button">Tambah Data</a>
+                                class="btn btn-md btn-outline-primary float-end mb-2" type="button">Tambah Data</a>
                             <table class="display dataTable cell-border" id="basicdata-tbl" style="width:100%">
                                 <thead>
                                     <tr>

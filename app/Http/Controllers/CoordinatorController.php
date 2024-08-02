@@ -57,7 +57,7 @@ class CoordinatorController extends Controller
     {
 
         if(request('output') == 'pdf') {
-            $pdf = Pdf::loadView('admin.coordinators.print', compact('coordinator'))->setPaper('a4');
+            $pdf = Pdf::loadView('admin.coordinators.print', compact('coordinator'))->setPaper('a4', 'landscape');
             return $pdf->download('print.pdf');
         } 
         return view('admin.coordinators.show', compact('coordinator'));
