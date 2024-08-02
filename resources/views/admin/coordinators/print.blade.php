@@ -26,7 +26,7 @@
 </head>
 
 <body>
-    <h1 style="text-align: center">Daftar Keanggotaan</h1>
+    <h2 style="text-align: center">Daftar Keanggotaan</h2>
     <table class="mb-1" style="border: none !important;">
         <tr>
             <th>Nama </th>
