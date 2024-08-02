@@ -26,6 +26,7 @@
 </head>
 
 <body>
+    <h1 style="text-align: center">Daftar Keanggotaan</h1>
     <table class="mb-1" style="border: none !important;">
         <tr>
             <th>Nama </th>
@@ -47,14 +48,14 @@
 
     <table class="border-table">
         <tr class="border-table">
-            <th class="border-table" style="height: 20px; width: 40px; text-align: center; padding: 20px;">No</th>
-            <th class="border-table" style="height: 20px; width: auto; text-align: center; padding: 20px;">NIK</th>
-            <th class="border-table" style="height: 20px; width: auto; text-align: center; padding: 20px;">Nama</th>
-            <th class="border-table" style="height: 20px; width: auto; text-align: center; padding: 20px;">No Handphone
+            <th class="border-table" style="height: 20px; width: 20px; text-align: center; padding: 20px;">No</th>
+            <th class="border-table" style="height: 20px; width: 100px; text-align: center; padding: 20px;">NIK</th>
+            <th class="border-table" style="height: 20px; width: 150px; text-align: center; padding: 20px;">Nama</th>
+            <th class="border-table" style="height: 20px; width: 150px; text-align: center; padding: 20px;">No Handphone
             </th>
-            <th class="border-table" style="height: 20px; width: auto; text-align: center; padding: 20px;">Gampong</th>
-            <th class="border-table" style="height: 20px; width: auto; text-align: center; padding: 20px;">TPS</th>
-            <th class="border-table" style="height: 20px; width: auto; text-align: center; padding: 20px;">Paraf</th>
+            <th class="border-table" style="height: 20px; width: 100px; text-align: center; padding: 20px;">Gampong</th>
+            <th class="border-table" style="height: 20px; width: 100px; text-align: center; padding: 20px;">TPS</th>
+            <th class="border-table" style="height: 20px; width: 100px; text-align: center; padding: 20px;">Paraf</th>
         </tr>
         @forelse ($coordinator->members as $member)
             <tr>
