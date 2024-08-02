@@ -72,7 +72,7 @@
                         </div>
                         <div class="card-body">
                             <div id="apex-columnchart"></div>
-                          </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -81,8 +81,8 @@
 @endsection
 
 @push('script')
-          <!-- apex chart-->
-          <script src="{{ asset('assets/js/vendors/chart/apexcharts.js') }}"></script>
-          <!-- custom apex chart-->
-          <script src="{{ asset('assets/js/vendors/chart/custom-apexchart.js') }}"></script>
+    <!-- apex chart-->
+    <script src="{{ asset('assets/js/vendors/chart/apexcharts.js') }}"></script>
+    <!-- custom apex chart-->
+    <script src="{{ asset('assets/js/vendors/chart/custom-apexchart.js') }}"></script>
 @endpush
