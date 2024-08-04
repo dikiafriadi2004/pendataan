@@ -15,10 +15,10 @@ use Illuminate\Support\Facades\Route;
 // })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
-    Route::get('/', function () {
-        return view('admin.dashboard');
-    });
-
+    // Route::get('/', function () {
+    //     return view('admin.dashboard');
+    // });
+    Route::get('/', [DashboardController::class, 'index'])->name('index');
 
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
