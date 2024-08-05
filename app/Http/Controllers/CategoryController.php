@@ -18,6 +18,10 @@ class CategoryController extends Controller
     public function index()
     {
         $categories = Category::orderByDesc('id')->get();
+        if(request('output') == 'pdf') {
+            $pdf = Pdf::loadView('admin.categories.printcategory', compact('categories'))->setPaper('a4', 'portrait');
+            return $pdf->download('print_categories.pdf');
+        } 
         return view('admin.categories.index', compact('categories'));
     }
 

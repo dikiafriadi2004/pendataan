@@ -23,7 +23,7 @@ class CoordinatorController extends Controller
         $coordinators = Coordinator::with(['members'])->orderByDesc('id')->get();
 
         if(request('output') == 'pdf') {
-            $pdf = Pdf::loadView('admin.coordinators.printcoordinator', compact('coordinators'))->setPaper('a4', 'landscape');
+            $pdf = Pdf::loadView('admin.coordinators.printcoordinator', compact('coordinators'))->setPaper('f4', 'potrait');
             return $pdf->download('print_koordinator.pdf');
         } 
 
