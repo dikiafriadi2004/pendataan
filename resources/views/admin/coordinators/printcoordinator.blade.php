@@ -48,22 +48,22 @@
 
     <table class="border-table">
         <tr class="border-table">
-            <th class="border-table" style="height: 20px; width: 20px; text-align: center; padding: 20px;">No</th>
-            <th class="border-table" style="height: 20px; width: 100px; text-align: center; padding: 20px;">NIK</th>
-            <th class="border-table" style="height: 20px; width: 150px; text-align: center; padding: 20px;">Nama</th>
-            <th class="border-table" style="height: 20px; width: 150px; text-align: center; padding: 20px;">No Handphone
+            <th class="border-table" style="text-align: center; height: 20px; width: 50px">No</th>
+            <th class="border-table" style="text-align: center; height: 20px; width: 180px;">NIK</th>
+            <th class="border-table" style="text-align: center; height: 20px; width: 180px;">Nama</th>
+            <th class="border-table" style="text-align: center; height: 20px; width: 180px;">No Handphone
             </th>
-            <th class="border-table" style="height: 20px; width: 100px; text-align: center; padding: 20px;">Gampong</th>
+            <th class="border-table" style="width: 150px; height: 20px; text-align: center;">Gampong</th>
             {{-- <th class="border-table" style="height: 20px; width: 100px; text-align: center; padding: 20px;">TPS</th>
             <th class="border-table" style="height: 20px; width: 100px; text-align: center; padding: 20px;">Paraf</th> --}}
         </tr>
         @forelse ($coordinators as $coordinator)
             <tr>
-                <td class="border-table" style="text-align: center; height: 50px; padding: 5px;" >{{ $loop->iteration }}</td>
-                <td class="border-table" style="height: 50px; padding: 20px;" >{{ $coordinator->nik }}</td>
-                <td class="border-table" style="height: 50px; padding: 20px;" >{{ $coordinator->name }}</td>
-                <td class="border-table" style="height: 50px; padding: 20px;" >{{ $coordinator->no_hp }}</td>
-                <td class="border-table" style="height: 50px; padding: 20px;" >{{ $coordinator->village->name }}</td>
+                <td class="border-table" style="text-align: center; ; padding: 5px; height: 20px;">{{ $loop->iteration }}</td>
+                <td class="border-table" style="padding-left: 5px; height: 20px;">{{ $coordinator->nik }}</td>
+                <td class="border-table" style="padding-left: 5px; height: 20px;">{{ $coordinator->name }}</td>
+                <td class="border-table" style="padding-left: 5px; height: 20px;">{{ $coordinator->no_hp }}</td>
+                <td class="border-table" style="padding-left: 5px; height: 20px;">{{ $coordinator->village->name }}</td>
                 {{-- <td class="border-table"style="text-align: center; height: 50px; padding: 20px;" >{{ $member->tps }}</td>
                 <td class="border-table" style="height: 50px; padding: 20px;" >&nbsp;&nbsp;&nbsp;&nbsp;</td> --}}
             </tr>
