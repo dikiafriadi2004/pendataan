@@ -3,8 +3,7 @@
         <a class="codexbrand-logo d-flex" href="index.html">
             {{-- <img
                 class="img-fluid" src="assets/images/logo/logo.png" alt="theeme-logo"> --}}
-                <span
-                class="text-white fs-3 align-middle ms-2 fw-semibold">Pendataan</span></a>
+            <span class="text-white fs-3 align-middle ms-2 fw-semibold">Pendataan</span></a>
         <div class="sidebar-action"><i data-feather="grid"> </i></div>
     </div>
     <div class="codex-menuwrapper">
@@ -26,6 +25,9 @@
                 </a></li>
             <li class="menu-item"><a href="{{ route('admin.coordinators.index') }}">
                     <div class="icon-item"><i data-feather="users"></i></div><span>Koordinator</span>
+                </a></li>
+            <li class="menu-item"><a href="{{ route('admin.members.index') }}">
+                    <div class="icon-item"><i data-feather="users"></i></div><span>Anggota</span>
                 </a></li>
         </ul>
     </div>

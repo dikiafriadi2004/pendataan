@@ -18,7 +18,8 @@ class MemberController extends Controller
      */
     public function index()
     {
-        //
+        $members = Member::orderByDesc('id')->get();
+        return view('admin.members.index', compact('members'));
     }
 
     /**

@@ -26,6 +26,9 @@ Route::middleware('auth')->group(function () {
 
     Route::prefix('admin')->name('admin.')->group(function () {
         Route::get('/dashboard', [DashboardController::class, 'dashboard'])->name('dashboard');
+        // Route::get('members', [MemberController::class, 'index'])->name('index');
+
+        Route::resource('members', MemberController::class);
 
         Route::middleware('can:manage villages')->group(function () {
             Route::resource('villages', VillageController::class);
@@ -42,6 +45,8 @@ Route::middleware('auth')->group(function () {
         Route::middleware('can:manage villages')->group(function () {
             Route::get('/add/member/{coordinator:slug}', [MemberController::class, 'create'])->name('member.create');
             Route::post('/add/member/{coordinator:slug}/store', [MemberController::class, 'store'])->name('member.store');
+
+            // Route::get('/members', [MemberController::class, 'index'])->name('member.index');
 
             Route::get('/coordinator/{coordinator:slug}/member/{member}/', [MemberController::class, 'edit'])->name('member.edit');
 
