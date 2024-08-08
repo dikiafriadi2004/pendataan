@@ -43,6 +43,7 @@
                                         <th>Nama</th>
                                         <th>No Handphone</th>
                                         <th>Gampong</th>
+                                        <th>Koordinator</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -53,6 +54,7 @@
                                         <td>{{ $member->name }}</td>
                                         <td>{{ $member->no_hp }}</td>
                                         <td>{{ $member->village->name ?? '' }}</td>
+                                        <td>{{ $member->coordinator->name ?? '' }}</td>
                                     </tr>
                                     @empty
                                         Belum ada data terbaru
