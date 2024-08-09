@@ -63,7 +63,7 @@
                                 <div class="form-group">
                                     <label class="form-label">No Handphone</label>
                                     <input class="form-control" type="text" id="no_hp" name="no_hp"
-                                        placeholder="Isi No Handphone" maxlength="13">
+                                        placeholder="Isi No Handphone" maxlength="13" value="{{ old('no_hp') }}">
                                     @if ($errors->has('no_hp'))
                                         <div class="text-danger">{{ $errors->first('no_hp') }}</div>
                                     @endif
@@ -80,7 +80,7 @@
                                 <div class="form-group">
                                     <label class="form-label">TPS</label>
                                     <input class="form-control" type="text" id="tps" name="tps"
-                                        placeholder="Isi TPS">
+                                        placeholder="Isi TPS" value="{{ old('tps') }}">
                                     @if ($errors->has('tps'))
                                         <div class="text-danger">{{ $errors->first('tps') }}</div>
                                     @endif
