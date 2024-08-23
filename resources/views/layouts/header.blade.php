@@ -21,8 +21,8 @@
                     </div>
                     <div class="hover-dropdown navprofile-drop">
                         <ul>
-                            {{-- <li><a href="profile.html"><i class="me-2 align-middle" data-feather="user"></i>profile</a>
-                            </li> --}}
+                            <li><a href="{{ route('profile.edit') }}"><i class="me-2 align-middle" data-feather="user"></i>profile</a>
+                            </li>
                             <li>
                                 <form method="POST" action="{{ route('logout') }}">
                                     @csrf
