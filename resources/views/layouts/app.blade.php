@@ -30,6 +30,13 @@
     @stack('css')
     <!-- Custom css-->
     <link href="{{ asset('assets/css/style.css') }}" rel="stylesheet">
+
+    <style>
+        table tr, td {
+            text-transform: uppercase;
+            /* text-transform: lowercase; */
+        }
+    </style>
 </head>
 
 <body>
