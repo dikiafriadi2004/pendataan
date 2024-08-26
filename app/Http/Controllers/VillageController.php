@@ -48,7 +48,7 @@ class VillageController extends Controller
      */
     public function show(Village $village)
     {
-        // 
+        return view('admin.villages.show', compact('village'));
     }
 
     /**

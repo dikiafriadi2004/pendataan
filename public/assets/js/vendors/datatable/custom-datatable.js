@@ -5,6 +5,10 @@ $(document).ready(function() {
     "scrollX": true,
   });
 
+  $('#basicdata-tbl1').DataTable({
+    "scrollX": true,
+  });
+
 
   //Advance Datatable
   $('#datatbl-advance').DataTable({    

@@ -51,6 +51,7 @@
                                             <td>{{ $loop->iteration }}</td>
                                             <td>{{ $village->name }}</td>
                                             <td>
+                                                <a href="{{ route('admin.villages.show', $village) }}" class="btn btn-outline-info">Detail</a>
                                                 <a href="{{ route('admin.villages.edit', $village) }}"
                                                     class="btn btn-outline-primary">Ubah</a>
                                             </td>

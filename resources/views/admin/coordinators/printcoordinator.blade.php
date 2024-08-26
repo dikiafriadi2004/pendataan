@@ -21,6 +21,11 @@
             border-collapse: collapse;
             width: 50%;
         }
+
+        table tr, td, th {
+            text-transform: uppercase;
+            /* text-transform: lowercase; */
+        }
     </style>
     <title>Document</title>
 </head>
