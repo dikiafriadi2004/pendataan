@@ -38,7 +38,8 @@ class MemberController extends Controller
     {
         DB::transaction(function () use ($request, $coordinator) {
             $validated = $request->validated();
-            $validated['slug'] = Str::slug($validated['name']);
+            // $validated['slug'] = Str::slug($validated['name']);
+            $validated['slug'] = Str::slug($validated['name']. '-'.Str::random(5));
 
             $validated['coordinator_id'] = $coordinator->id;
 
