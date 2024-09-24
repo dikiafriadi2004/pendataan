@@ -48,7 +48,8 @@ class CoordinatorController extends Controller
     {
         DB::transaction(function() use ($request) {
             $validated = $request->validated();
-            $validated['slug'] = Str::slug($validated['name']);
+            // $validated['slug'] = Str::slug($validated['name']);
+            $validated['slug'] = Str::slug($validated['name']. '-'.Str::random(5));
 
             $newCoordinator = Coordinator::create($validated);
         });
