@@ -81,9 +81,10 @@
     
     @stack('script')
     <!-- dashboard-->
-    <script src="{{ asset('assets/js/dashboard/dashboard.js') }}"></script>
+    {{-- <script src="{{ asset('assets/js/dashboard/dashboard.js') }}"></script> --}}
     <!-- Custom script-->
     <script src="{{ asset('assets/js/custom-script.js') }}"></script>
+    
 </body>
 
 </html>
