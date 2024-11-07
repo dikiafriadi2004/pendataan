@@ -12,7 +12,11 @@ class CoordinatorsExport implements FromCollection
     */
     public function collection()
     {
+        $coordinators = Coordinator::with('members')->get();
 
-        return Coordinator::with(['members'])->orderByDesc('id')->get();
+        foreach ($coordinators->members as $coordinator) {
+            foreach($coordinator->members_id as $member)
+            echo $member->coordinator->name;
+        }
     }
 }

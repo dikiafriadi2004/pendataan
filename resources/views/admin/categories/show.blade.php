@@ -42,7 +42,7 @@
                                         <th>NIK</th>
                                         <th>Nama</th>
                                         <th>Kategori</th>
-                                        {{-- <th>Action </th> --}}
+                                        <th>Action </th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -52,6 +52,7 @@
                                         <td>{{ $coordinator->nik }}</td>
                                         <td>{{ $coordinator->name }}</td>
                                         <td>{{ $category->name }}</td>
+                                        <td><a href="{{ route('admin.coordinators.show', $coordinator) }}" class="btn btn-outline-info">Detail</a></td>
                                         {{-- <td>
                                             <form action="{{ route('admin.member.destroy', [$coordinator->slug, $member]) }}" method="POST">
                                                 @csrf
