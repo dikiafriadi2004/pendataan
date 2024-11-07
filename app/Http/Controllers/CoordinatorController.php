@@ -72,7 +72,7 @@ class CoordinatorController extends Controller
         } 
 
         if(request('output') == 'xlsx'){
-            return Excel::download(new CoordinatorsExport($coordinator), 'coordinators.xlsx');
+            return Excel::download(new CoordinatorsExport, 'coordinators.xlsx');
         }
         return view('admin.coordinators.show', compact('coordinator'));
     }
