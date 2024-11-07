@@ -2,13 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\CoordinatorsExport;
 use App\Models\Village;
 use App\Models\Category;
 use App\Models\Coordinator;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use App\Exports\MembersExport;
 use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Support\Facades\DB;
+use Maatwebsite\Excel\Facades\Excel;
 use App\Http\Requests\StoreCoordinatorRequest;
 use App\Http\Requests\UpdateCoordinatorRequest;
 
@@ -67,6 +70,10 @@ class CoordinatorController extends Controller
             $pdf = Pdf::loadView('admin.coordinators.print', compact('coordinator'))->setPaper('a4', 'landscape');
             return $pdf->download('print.pdf');
         } 
+
+        if(request('output') == 'xlsx'){
+            return Excel::download(new CoordinatorsExport($coordinator), 'coordinators.xlsx');
+        }
         return view('admin.coordinators.show', compact('coordinator'));
     }
 
