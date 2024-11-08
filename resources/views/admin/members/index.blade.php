@@ -35,18 +35,6 @@
                     <div class="card">
                         <div class="swal-notif" data-swal="{!! Session::get('success') !!}"></div>
                         <div class="card-body">
-                            <div>
-                                <label for="">Koordinator</label>
-                                <select name="" id="">
-                                    <option value="">Mahmudin</option>
-                                </select>
-                            </div>
-                            <div>
-                                <label for="">Kampung</label>
-                                <select name="" id="">
-                                    <option value="">Kuta Alam</option>
-                                </select>
-                            </div>
                             <table class="display dataTable cell-border" id="basicdata-tbl" style="width:100%">
                                 <thead>
                                     <tr>
