@@ -19,7 +19,7 @@ class VillageController extends Controller
      */
     public function index()
     {
-        $villages = Village::orderByDesc('id')->get();
+        $villages = Village::orderBy('name')->get();
         return view('admin.villages.index', compact('villages'));
     }
 
@@ -58,7 +58,7 @@ class VillageController extends Controller
         $village->members = $village->members->sortBy(function ($member) {
             return $member->coordinator->name;
         });
-        
+
         $member = Member::orderBy('name', 'asc');
         if(request('output') == 'pdf') {
             $pdf = Pdf::loadView('admin.villages.print', compact('village'))->setPaper('a4', 'landscape');
