@@ -9,6 +9,14 @@ $(document).ready(function() {
     "scrollX": true,
   });
 
+  $('#basicdata-tbl2').DataTable({
+    "scrollX": true,
+    "order": [[4, "asc"]],
+    "columnDefs": [
+      {"orderable" : true, "targets": 4}
+    ]
+  });
+
 
   //Advance Datatable
   $('#datatbl-advance').DataTable({    

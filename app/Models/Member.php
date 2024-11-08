@@ -20,7 +20,7 @@ class Member extends Model
 
     public function coordinator()
     {
-        return $this->belongsTo(Coordinator::class);
+        return $this->belongsTo(Coordinator::class)->orderBy('name', 'ASC');
     }
     
     public function village()

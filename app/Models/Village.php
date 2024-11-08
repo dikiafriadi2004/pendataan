@@ -16,7 +16,7 @@ class Village extends Model
 
     public function coordinators()
     {
-        return $this->hasMany(Coordinator::class);
+        return $this->hasMany(Coordinator::class)->orderBy('name', 'ASC');
     }
 
     public function members()

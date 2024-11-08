@@ -61,7 +61,7 @@
                             <a href="{{ route('admin.villages.show', $village) . '?output=pdf' }}"
                             class="btn btn-md btn-outline-secondary mb-2" type="button">Export PDF</a>
                             <h3>Anggota</h3>
-                            <table class="display dataTable cell-border" id="basicdata-tbl1" style="width:100%">
+                            <table class="display dataTable cell-border" id="basicdata-tbl2" style="width:100%">
                                 <thead>
                                     <tr>
                                         <th style="width: 5%;">No</th>

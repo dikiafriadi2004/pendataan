@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\DB;
 use App\Http\Requests\StoreVillageRequest;
 use App\Http\Requests\UpdateVillageRequest;
 use App\Models\Coordinator;
+use App\Models\Member;
 
 class VillageController extends Controller
 {
@@ -48,13 +49,22 @@ class VillageController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Village $village)
+    public function show($id)
     {
+        $village = Village::with(['members.coordinator' => function($query) {
+            $query->orderBy('name', 'asc');
+        }])->where('id', $id)->first();
+
+        $village->members = $village->members->sortBy(function ($member) {
+            return $member->coordinator->name;
+        });
+        
+        $member = Member::orderBy('name', 'asc');
         if(request('output') == 'pdf') {
             $pdf = Pdf::loadView('admin.villages.print', compact('village'))->setPaper('a4', 'landscape');
             return $pdf->download('print.pdf');
         } 
-        return view('admin.villages.show', compact('village'));
+        return view('admin.villages.show', compact('village', 'member'));
     }
 
     /**
