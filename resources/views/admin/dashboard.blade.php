@@ -85,6 +85,16 @@
                         </div>
                     </div>
                 </div>
+                @foreach($column as $key => $data)
+                <div class="col-xxl-12 cdx-xxl-50">
+                    <div class="card overall-revenuetbl">
+                        <div class="card-body">
+                            <div id="chart-{{ $key }}"></div>
+                        </div>
+                    </div>
+                </div>
+            @endforeach
+
             </div>
         </div>
     </div>
@@ -170,6 +180,68 @@
             }
         ]
 
+    });
+</script>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        @foreach($column as $key => $data)
+            Highcharts.chart('chart-{{ $key }}', {
+                chart: {
+                    type: 'column'
+                },
+                title: {
+                    text: 'Jumlah Anggota dan Koordinator Setiap Village'
+                },
+                xAxis: {
+                    categories: [
+                        @foreach($data as $village)
+                            '{{ $village->name }}',
+                        @endforeach
+                    ],
+                    title: {
+                        text: null
+                    }
+                },
+                yAxis: {
+                    min: 0,
+                    title: {
+                        text: 'Jumlah',
+                        align: 'high'
+                    },
+                    labels: {
+                        overflow: 'justify'
+                    }
+                },
+                plotOptions: {
+                    bar: {
+                        dataLabels: {
+                            enabled: true
+                        }
+                    }
+                },
+                legend: {
+                    reversed: true
+                },
+                credits: {
+                    enabled: false
+                },
+                series: [{
+                    name: 'Anggota',
+                    data: [
+                        @foreach($data as $village)
+                            {{ $village->members_count }},
+                        @endforeach
+                    ]
+                }, {
+                    name: 'Koordinator',
+                    data: [
+                        @foreach($data as $village)
+                            {{ $village->coordinators_count }},
+                        @endforeach
+                    ]
+                }]
+            });
+        @endforeach
     });
 </script>
 @endpush

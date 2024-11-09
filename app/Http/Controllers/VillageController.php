@@ -59,11 +59,19 @@ class VillageController extends Controller
             return $member->coordinator->name;
         });
 
+        $print = Village::with(['members.coordinator' => function($query) {
+            $query->orderBy('name', 'asc');
+        }])->where('id', $id)->first();
+
+        $print->members = $print->members->sortBy(function ($member) {
+            return $member->coordinator->category->name;
+        });
+
         $member = Member::orderBy('name', 'asc');
         if(request('output') == 'pdf') {
-            $pdf = Pdf::loadView('admin.villages.print', compact('village'))->setPaper('a4', 'landscape');
+            $pdf = Pdf::loadView('admin.villages.print', ['village' => $print])->setPaper('a4', 'landscape');
             return $pdf->download('print.pdf');
-        } 
+        }
         return view('admin.villages.show', compact('village', 'member'));
     }
 

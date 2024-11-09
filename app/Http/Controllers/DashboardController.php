@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Member;
+use App\Models\Village;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -33,7 +34,10 @@ class DashboardController extends Controller
         $coordinators = DB::table('coordinators')->count();
         $members = DB::table('members')->count();
 
-        return view('admin.dashboard', compact('villages', 'categories', 'coordinators', 'members', 'datas'));
+        $datavillage = Village::withCount(['members', 'coordinators'])->get();
+        $column = $datavillage->chunk(20);
+
+        return view('admin.dashboard', compact('villages', 'categories', 'coordinators', 'members', 'datas', 'column'));
     }
 
     public function dashboard()
@@ -61,6 +65,9 @@ class DashboardController extends Controller
         $coordinators = DB::table('coordinators')->count();
         $members = DB::table('members')->count();
 
-        return view('admin.dashboard', compact('villages', 'categories', 'coordinators', 'members', 'datas'));
+        $datavillage = Village::withCount(['members', 'coordinators'])->get();
+        $column = $datavillage->chunk(20);
+
+        return view('admin.dashboard', compact('villages', 'categories', 'coordinators', 'members', 'datas', 'column'));
     }
 }
