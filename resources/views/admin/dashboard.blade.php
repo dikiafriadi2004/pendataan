@@ -103,85 +103,6 @@
 @push('script')
     <script src="https://code.highcharts.com/highcharts.js"></script>
 
-    <script>
-        Highcharts.chart('chart-container', {
-            chart: {
-                type: 'column'
-            },
-            title: {
-                text: 'Grafik Anggota Terdaftar'
-            },
-            xAxis: {
-                categories: ['Atek Jawo', 'Atek Deah Tanoh', 'Atek Pahlawan', 'Atek Munjeng', 'Nesu Aceh', 'Kampong Baru', 'Nesu Jaya', 'Peuniti', 'SEUTUI', 'Suka Ramai', 'Lam Ara', 'Lampout', 'Mibo', 'Lhong Cut', 'Lhong Raya', 'Penyeurat', 'Lamlagang', 'Geuceu Komplek', 'Geuceu Inem', 'Geuceu Kaye Jato', 'Bitai', 'Emperom', 'Geuceu Menara', 'Lamjamee', 'Lampoh Daya', 'Lamtemen Barat', 'Lamtemen Timur', 'Punge Blang Cut', '	Ulee Peta', 'Penayong'],
-                crosshair: true,
-            },
-            plotOptions: {
-                column: {
-                    pointPadding: 0.2,
-                    borderWidth: 0
-                }
-            },
-            series: [{
-                    name: 'Anggota',
-                    data: [206,160,190,134,330,341,164,1121,211,562,508,6,158,47,217,329,392,185,185,47,143,373,325,254,200,259,356,303,160,122]
-                }
-            ]
-        });
-    </script>
-
-<script>
-    Highcharts.chart('chart-container-2', {
-        chart: {
-            type: 'column'
-        },
-        title: {
-            text: 'Grafik Anggota Terdaftar'
-        },
-        xAxis: {
-            categories: ['Laksana', 'Keuramat', 'KUTA ALAM', 'Beurawe', 'Kota Baru', 'Bandar Baru', 'Mulia', 'Lampulo', 'Lamdingin', 'Lambaro Skep', 'Lampaseh Kota', 'Merdu Wati', 'Keudah', 'Pelanggahan', 'Gampong Jawa', 'Gampong Pande', 'Batoh', 'Blang Cut', 'Cot Mesjid', 'Lampaloh', 'Lamdom', 'Lamseupeung', 'Lueng Bata', 'Panterik', 'Suka Damai', 'Alue Deah Tengoh', 'Asoe Nanggro', 'Gampong Blang', 'Blang Oi', 'GAMPONG BARO'],
-            crosshair: true,
-        },
-        plotOptions: {
-            column: {
-                pointPadding: 0.2,
-                borderWidth: 0
-            }
-        },
-        series: [{
-                name: 'Anggota',
-                data: [228,378,384,184,9,89,362,639,344,522,73,86,140,314,432,96,206,357,311,28,482,386,377,294,297,149,98,50,248,61]
-            }
-        ]
-
-    });
-</script>
-
-<script>
-    Highcharts.chart('chart-container-3', {
-        chart: {
-            type: 'column'
-        },
-        title: {
-            text: 'Grafik Anggota Terdaftar'
-        },
-        xAxis: {
-            categories: ['Cot Lamkueweuh', 'Deah Baro', 'Deah Glumpang', 'Lambung', 'LAMJABAT', 'LAMPASEH ACEH', 'Gampong Pie', 'Punge Jurong', 'Punge Ujong', 'Surien', 'Ulee Lheue', 'ALUE NAGA', 'Deah Raya', 'Ie Masen Kaye Adang', 'Jeulingke', 'Kopelma Darusalam', 'Lamgugob', 'Perada', 'PINEUNG', 'RUKOH', 'Tibang', 'Pango Raya', 'Pango Deah', 'Ilie', 'Lamglumpang', 'Curih', 'Ie Masen Ulee Kareng', 'Doi', 'Lamteh', 'Lambhuk',],
-            crosshair: true,
-        },
-        plotOptions: {
-            column: {
-                pointPadding: 0.2,
-                borderWidth: 0
-            }
-        },
-        series: [{
-                name: 'Anggota',
-                data: [99,151,108,163,187,565,85,431,251,174,46,522,110,283,190,31,202,60,125,127,127,50,117,121,128,214,152,16,29,70]
-            }
-        ]
-
-    });
-</script>
 <script>
     document.addEventListener('DOMContentLoaded', function () {
         @foreach($column as $key => $data)
@@ -190,7 +111,7 @@
                     type: 'column'
                 },
                 title: {
-                    text: 'Jumlah Anggota dan Koordinator Setiap Village'
+                    text: 'Jumlah Anggota dan Koordinator Setiap Gampong'
                 },
                 xAxis: {
                     categories: [
