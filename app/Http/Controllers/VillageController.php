@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\DataTables\AnggotaDataTable;
+use App\DataTables\KoordinatorDataTable;
+use App\DataTables\VillageDataTable;
 use App\Models\Village;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
@@ -17,10 +20,9 @@ class VillageController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(VillageDataTable $dataTable)
     {
-        $villages = Village::orderBy('name')->get();
-        return view('admin.villages.index', compact('villages'));
+        return $dataTable->render('admin.villages.index');
     }
 
     /**
@@ -46,19 +48,7 @@ class VillageController extends Controller
         return redirect()->route('admin.villages.index')->with('success', 'Data gampong berhasil ditambah');
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show($id)
-    {
-        $village = Village::with(['members.coordinator' => function($query) {
-            $query->orderBy('name', 'asc');
-        }])->where('id', $id)->first();
-
-        $village->members = $village->members->sortBy(function ($member) {
-            return $member->coordinator->name;
-        });
-
+    public function pdf($id){
         $print = Village::with(['members.coordinator' => function($query) {
             $query->orderBy('name', 'asc');
         }])->where('id', $id)->first();
@@ -72,7 +62,32 @@ class VillageController extends Controller
             $pdf = Pdf::loadView('admin.villages.print', ['village' => $print])->setPaper('a4', 'landscape');
             return $pdf->download('print.pdf');
         }
-        return view('admin.villages.show', compact('village', 'member'));
+    }
+
+    /**
+     * Display the specified resource.
+     */
+    public function show($id)
+    {
+        $koordinator = new KoordinatorDataTable($id);
+        $anggota = new AnggotaDataTable($id);
+        return view('admin.villages.show', [
+            'village' => $id,
+            'koordinatorTable' => $koordinator->html(),
+            'anggotaTable' => $anggota->html()
+        ]);
+    }
+
+    public function getkoordinator($id)
+    {
+        $koordinator = new KoordinatorDataTable($id);
+        return $koordinator->render('admin.villages.show');
+    }
+
+    public function getAnggota($id)
+    {
+        $anggota = new AnggotaDataTable($id);
+        return $anggota->render('admin.villages.show');
     }
 
     /**

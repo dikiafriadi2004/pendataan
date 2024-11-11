@@ -37,36 +37,8 @@
                         <div class="card-body">
                             <a href="{{ route('admin.villages.create') }}" class="btn btn-md btn-primary float-end mb-2"
                                 type="button">Tambah Data</a>
-                            <table class="display dataTable cell-border" id="basicdata-tbl" style="width:100%">
-                                <thead>
-                                    <tr>
-                                        <th>No</th>
-                                        <th>Gampong</th>
-                                        <th>Action </th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    @forelse ($villages as $village)
-                                        <tr>
-                                            <td>{{ $loop->iteration }}</td>
-                                            <td>{{ $village->name }}</td>
-                                            <td>
-                                                <a href="{{ route('admin.villages.show', $village) }}" class="btn btn-outline-info">Detail</a>
-                                                <a href="{{ route('admin.villages.edit', $village) }}"
-                                                    class="btn btn-outline-primary">Ubah</a>
-                                            </td>
-                                            {{-- <td>
-                                            <form action="{{ route('admin.villages.destroy', $village) }}" method="POST">
-                                                @csrf
-                                                @method('DELETE')
-                                                <button type="submit" class="btn btn-outline-danger">Hapus</button>
-                                            </form>
-                                        </td> --}}
-                                        </tr>
-                                    @empty
-                                        Belum ada data terbaru
-                                    @endforelse
-                                </tbody>
+                            <table class="display dataTable cell-border" id="village-table" style="width:100%">
+                                {!! $dataTable->table() !!}
                             </table>
                         </div>
                     </div>
@@ -77,6 +49,7 @@
 @endsection
 
 @push('script')
+{!! $dataTable->scripts() !!}
     <!-- Datatable-->
     <script src="{{ asset('assets/js/vendors/datatable/jquery.dataTables.min.js') }}"></script>
     <script src="{{ asset('assets/js/vendors/datatable/dataTables.buttons.min.js') }}"></script>

@@ -31,6 +31,9 @@ Route::middleware('auth')->group(function () {
         Route::resource('members', MemberController::class);
 
         Route::middleware('can:manage villages')->group(function () {
+            Route::get('/villages/anggota/{id}', [VillageController::class, 'getAnggota'])->name('villages.anggota');
+            Route::get('/villages/koordinator/{id}', [VillageController::class, 'getkoordinator'])->name('villages.koordinator');
+            Route::get('/villages/pdf/{id}', [VillageController::class, 'pdf'])->name('villages.pdf');
             Route::resource('villages', VillageController::class);
         });
 

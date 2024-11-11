@@ -35,59 +35,21 @@
                     <div class="card">
                         <div class="card-body">
                             <h3>Koordinator</h3>
-                            <table class="display dataTable cell-border" id="basicdata-tbl" style="width:100%">
-                                <thead>
-                                    <tr>
-                                        <th style="width: 5%;">No</th>
-                                        <th>Nama</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    @forelse ($village->coordinators as $coordinator)
-                                        <tr>
-                                            <td>{{ $loop->iteration }}</td>
-                                            <td>{{ $coordinator->name }}</td>
-                                        @empty
-                                            Belum ada data terbaru
-                                    @endforelse
-                                </tbody>
-                            </table>
+                            <div class="table-responsive">
+                                {{$koordinatorTable->table(['width' => '100%', 'id'=>'koordinator-table', 'class' => 'table table-striped dataTable'])}}
+                            </div>
                         </div>
                     </div>
                 </div>
                 <div class="col-12">
                     <div class="card">
                         <div class="card-body">
-                            <a href="{{ route('admin.villages.show', $village) . '?output=pdf' }}"
+                            <a href="{{ route('admin.villages.pdf', $village) . '?output=pdf' }}"
                             class="btn btn-md btn-outline-secondary mb-2" type="button">Export PDF</a>
                             <h3>Anggota</h3>
-                            <table class="display dataTable cell-border" id="basicdata-tbl2" style="width:100%">
-                                <thead>
-                                    <tr>
-                                        <th style="width: 5%;">No</th>
-                                        <th>Nama</th>
-                                        <th>NIK</th>
-                                        <th>No Handphone</th>
-                                        <th>Koordinator</th>
-                                        <th>Gampong</th>
-                                        <th>TPS</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    @forelse ($village->members as $member)
-                                        <tr>
-                                            <td>{{ $loop->iteration }}</td>
-                                            <td>{{ $member->name }}</td>
-                                            <td>{{ $member->nik }}</td>
-                                            <td>{{ $member->no_hp }}</td>
-                                            <td>{{ $member->coordinator->name }}</td>
-                                            <td>{{ $member->village->name }}</td>
-                                            <td>{{ $member->tps }}</td>
-                                        @empty
-                                            Belum ada data terbaru
-                                    @endforelse
-                                </tbody>
-                            </table>
+                            <div class="table-responsive">
+                                {{$anggotaTable->table(['width' => '100%', 'id'=>'anggota-table', 'class' => 'table table-striped dataTable'])}}
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -97,6 +59,8 @@
 @endsection
 
 @push('script')
+{{$koordinatorTable->scripts()}}
+{{$anggotaTable->scripts()}}
     <!-- Datatable-->
     <script src="{{ asset('assets/js/vendors/datatable/jquery.dataTables.min.js') }}"></script>
     <script src="{{ asset('assets/js/vendors/datatable/dataTables.buttons.min.js') }}"></script>
