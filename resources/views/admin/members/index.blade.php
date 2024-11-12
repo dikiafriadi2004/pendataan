@@ -35,31 +35,8 @@
                     <div class="card">
                         <div class="swal-notif" data-swal="{!! Session::get('success') !!}"></div>
                         <div class="card-body">
-                            <table class="display dataTable cell-border" id="basicdata-tbl" style="width:100%">
-                                <thead>
-                                    <tr>
-                                        <th>No</th>
-                                        <th>NIK</th>
-                                        <th>Nama</th>
-                                        <th>No Handphone</th>
-                                        <th>Gampong</th>
-                                        <th>Koordinator</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    @forelse ($members as $member)
-                                    <tr>
-                                        <td>{{$loop->iteration}}</td>
-                                        <td>{{ $member->nik }}</td>
-                                        <td>{{ $member->name }}</td>
-                                        <td>{{ $member->no_hp }}</td>
-                                        <td>{{ $member->village->name ?? '' }}</td>
-                                        <td>{{ $member->coordinator->name ?? '' }}</td>
-                                    </tr>
-                                    @empty
-                                        Belum ada data terbaru
-                                    @endforelse
-                                </tbody>
+                            <table class="display dataTable cell-border" id="members-table" style="width:100%">
+                                {!! $dataTable->table() !!}
                             </table>
                         </div>
                     </div>
@@ -70,6 +47,7 @@
 @endsection
 
 @push('script')
+{!! $dataTable->scripts() !!}
     <!-- Datatable-->
     <script src="{{ asset('assets/js/vendors/datatable/jquery.dataTables.min.js') }}"></script>
     <script src="{{ asset('assets/js/vendors/datatable/dataTables.buttons.min.js') }}"></script>

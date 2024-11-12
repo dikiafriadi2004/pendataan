@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\DataTables\MembersDataTable;
 use App\Models\Member;
 use App\Models\Village;
 use App\Models\Coordinator;
@@ -16,10 +17,9 @@ class MemberController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(MembersDataTable $dataTable)
     {
-        $members = Member::orderBy('name')->get();
-        return view('admin.members.index', compact('members'));
+        return $dataTable->render('admin.members.index');
     }
 
     /**
