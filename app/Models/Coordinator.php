@@ -9,6 +9,7 @@ class Coordinator extends Model
 {
     use HasFactory;
 
+
     protected $fillable = [
         'nik',
         'name',

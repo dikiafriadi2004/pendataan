@@ -63,15 +63,15 @@
                         </div>
                     </div>
                 </div>
-                @foreach($column as $key => $data)
-                <div class="col-xxl-12 cdx-xxl-50">
-                    <div class="card overall-revenuetbl">
-                        <div class="card-body">
-                            <div id="chart-{{ $key }}"></div>
+                @foreach ($column as $key => $data)
+                    <div class="col-xxl-12 cdx-xxl-50">
+                        <div class="card overall-revenuetbl">
+                            <div class="card-body">
+                                <div id="chart-{{ $key }}"></div>
+                            </div>
                         </div>
                     </div>
-                </div>
-            @endforeach
+                @endforeach
 
             </div>
         </div>
@@ -81,66 +81,99 @@
 @push('script')
     <script src="https://code.highcharts.com/highcharts.js"></script>
 
-<script>
-    document.addEventListener('DOMContentLoaded', function () {
-        @foreach($column as $key => $data)
-            Highcharts.chart('chart-{{ $key }}', {
-                chart: {
-                    type: 'column'
-                },
-                title: {
-                    text: 'Jumlah Anggota dan Koordinator Setiap Gampong'
-                },
-                xAxis: {
-                    categories: [
-                        @foreach($data as $village)
-                            '{{ $village->name }}',
-                        @endforeach
-                    ],
-                    title: {
-                        text: null
-                    }
-                },
-                yAxis: {
-                    min: 0,
-                    title: {
-                        text: 'Jumlah',
-                        align: 'high'
+    <script>
+        Highcharts.chart('chart-container', {
+            chart: {
+                type: 'column'
+            },
+            title: {
+                text: 'Grafik Anggota Terdaftar'
+            },
+            xAxis: {
+                categories: ['Atek Jawo', 'Atek Deah Tanoh', 'Atek Pahlawan', 'Atek Munjeng', 'Nesu Aceh',
+                    'Kampong Baru', 'Nesu Jaya', 'Peuniti', 'SEUTUI', 'Suka Ramai', 'Lam Ara', 'Lampout',
+                    'Mibo', 'Lhong Cut', 'Lhong Raya', 'Penyeurat', 'Lamlagang', 'Geuceu Komplek',
+                    'Geuceu Inem', 'Geuceu Kaye Jato', 'Bitai', 'Emperom', 'Geuceu Menara', 'Lamjamee',
+                    'Lampoh Daya', 'Lamtemen Barat', 'Lamtemen Timur', 'Punge Blang Cut', '	Ulee Peta',
+                    'Penayong'
+                ],
+                crosshair: true,
+            },
+            plotOptions: {
+                column: {
+                    pointPadding: 0.2,
+                    borderWidth: 0
+                }
+            },
+            series: [{
+                name: 'Anggota',
+                data: [206, 160, 190, 134, 330, 341, 164, 1121, 211, 562, 508, 6, 158, 47, 217, 329, 392,
+                    185, 185, 47, 143, 373, 325, 254, 200, 259, 356, 303, 160, 122
+                ]
+            }]
+        });
+    </script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            @foreach ($column as $key => $data)
+                Highcharts.chart('chart-{{ $key }}', {
+                    chart: {
+                        type: 'column'
                     },
-                    labels: {
-                        overflow: 'justify'
-                    }
-                },
-                plotOptions: {
-                    bar: {
-                        dataLabels: {
-                            enabled: true
+                    title: {
+                        text: 'Jumlah Anggota dan Koordinator Setiap Village'
+                    },
+                    xAxis: {
+                        categories: [
+                            @foreach ($data as $village)
+                                '{{ $village->name }}',
+                            @endforeach
+                        ],
+                        title: {
+                            text: null
                         }
-                    }
-                },
-                legend: {
-                    reversed: true
-                },
-                credits: {
-                    enabled: false
-                },
-                series: [{
-                    name: 'Anggota',
-                    data: [
-                        @foreach($data as $village)
-                            {{ $village->members_count }},
-                        @endforeach
-                    ]
-                }, {
-                    name: 'Koordinator',
-                    data: [
-                        @foreach($data as $village)
-                            {{ $village->coordinators_count }},
-                        @endforeach
-                    ]
-                }]
-            });
-        @endforeach
-    });
-</script>
+                    },
+                    yAxis: {
+                        min: 0,
+                        title: {
+                            text: 'Jumlah',
+                            align: 'high'
+                        },
+                        labels: {
+                            overflow: 'justify'
+                        }
+                    },
+                    plotOptions: {
+                        bar: {
+                            dataLabels: {
+                                enabled: true
+                            }
+                        }
+                    },
+                    legend: {
+                        reversed: true
+                    },
+                    credits: {
+                        enabled: false
+                    },
+                    series: [{
+                        name: 'Anggota',
+                        data: [
+                            @foreach ($data as $village)
+                                {{ $village->members_count }},
+                            @endforeach
+                        ]
+                    }, {
+                        name: 'Koordinator',
+                        data: [
+                            @foreach ($data as $village)
+                                {{ $village->coordinators_count }},
+                            @endforeach
+                        ]
+                    }]
+                });
+            @endforeach
+        });
+    </script>
 @endpush

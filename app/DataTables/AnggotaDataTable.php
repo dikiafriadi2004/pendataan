@@ -31,7 +31,13 @@ class AnggotaDataTable extends DataTable
     public function dataTable(QueryBuilder $query): EloquentDataTable
     {
         return (new EloquentDataTable($query))
-            ->setRowId('id');
+            ->setRowId('id')
+            ->filterColumn('coordinator_name', function($query, $keyword) {
+                $query->whereRaw('LOWER(coordinators.name) LIKE ?', ["%{$keyword}%"]);
+            })
+            ->filterColumn('village_name', function($query, $keyword) {
+                $query->whereRaw('LOWER(villages.name) LIKE ?', ["%{$keyword}%"]);
+            });
     }
 
     /**
@@ -40,11 +46,12 @@ class AnggotaDataTable extends DataTable
     public function query(Member $model): QueryBuilder
     {
         return $model->newQuery()
-                ->join('coordinators', 'coordinators.id', '=', 'members.coordinator_id')
-                ->join('villages', 'villages.id', '=', 'members.village_id')
-                ->where('members.village_id', $this->id)
-                ->select('members.id','members.name','members.nik','members.no_hp', 'members.tps', 'coordinators.name as coordinator_name', 'villages.name as village_name')
-                ->orderBy('coordinators.name', 'asc');
+            ->join('coordinators', 'coordinators.id', '=', 'members.coordinator_id')
+            ->join('villages', 'villages.id', '=', 'members.village_id')
+            ->where('members.village_id', $this->id)
+            ->addSelect('members.id', 'members.name', 'members.nik', 'members.no_hp', 'members.tps')
+            ->addSelect('coordinators.name as coordinator_name', 'villages.name as village_name')
+            ->orderBy('coordinators.name', 'asc');
     }
 
     /**
