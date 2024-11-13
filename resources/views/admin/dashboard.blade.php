@@ -122,7 +122,7 @@
                         type: 'column'
                     },
                     title: {
-                        text: 'Jumlah Anggota dan Koordinator Setiap Village'
+                        text: 'Jumlah Anggota dan Koordinator Setiap Gampong'
                     },
                     xAxis: {
                         categories: [
