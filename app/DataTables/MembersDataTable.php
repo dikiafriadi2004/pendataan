@@ -39,8 +39,9 @@ class MembersDataTable extends DataTable
         return $model->newQuery()
             ->join('coordinators', 'coordinators.id', '=', 'members.coordinator_id')
             ->join('villages', 'villages.id', '=', 'members.village_id')
+            ->join('categories', 'categories.id', '=', 'coordinators.category_id')
             ->addSelect('members.id', 'members.name', 'members.nik', 'members.no_hp', 'members.tps')
-            ->addSelect('coordinators.name as coordinator_name', 'villages.name as village_name')
+            ->addSelect('coordinators.name as coordinator_name', 'villages.name as village_name', 'categories.name as category_name')
             ->orderBy('members.name', 'asc');
     }
 
@@ -70,6 +71,7 @@ class MembersDataTable extends DataTable
             Column::make('no_hp')->title('No Handphone'),
             Column::make('village_name')->title('Gampong'),
             Column::make('coordinator_name')->title('Koordinator'),
+            Column::make('category_name')->title('Kategori'),
         ];
     }
 
