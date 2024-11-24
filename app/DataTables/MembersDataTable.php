@@ -28,6 +28,9 @@ class MembersDataTable extends DataTable
             })
             ->filterColumn('village_name', function($query, $keyword) {
                 $query->whereRaw('LOWER(villages.name) LIKE ?', ["%{$keyword}%"]);
+            })
+            ->filterColumn('category_name', function($query, $keyword) {                
+                $query->whereRaw('LOWER(categories.name) LIKE ?', ["%{$keyword}%"]);
             });
     }
 
